@@ -1,0 +1,31 @@
+{
+  "name": "mcp-file-server",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Sandboxed MCP file-server connector with git-lite tools, a multi-agent handoff protocol and token-protected Streamable HTTP.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test test/config.test.js test/sandbox.test.js test/tools.test.js test/run-tool.test.js test/http.test.js test/transcript.test.js",
+    "smoke": "node scripts/smoke.js",
+    "urls": "node scripts/urls.js",
+    "inspect": "npx @modelcontextprotocol/inspector",
+    "transcript": "node scripts/make-transcript.js",
+    "gen-token": "node scripts/gen-token.js",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:restart": "pm2 restart mcp-file-server",
+    "pm2:stop": "pm2 stop mcp-file-server",
+    "pm2:logs": "pm2 logs mcp-file-server"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "zod": "^3.25.0"
+  },
+  "license": "MIT"
+}

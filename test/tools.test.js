@@ -416,3 +416,38 @@ test("the sandbox protects every file tool and its error messages do not leak th
   }
   assert.ok(!fs.existsSync(path.join(ws, "..", "evil.txt")));
 });
+
+test("audit_loot_table: weights add up to 100 and there are no placeholders", async () => {
+  const { run } = await makeEnv();
+  const csv = [
+    "id,item_name,weight,rarity,source_creature",
+    "1,Bog Pearl,40,common,Giant Frog",
+    "2,Mire Charm,30,uncommon,Bog Wraith",
+    "3,Spore Vial,20,uncommon,Spore Lurker",
+    "4,Rotwood Staff,10,rare,Swamp Hag",
+    "",
+  ].join("\n");
+  await run("write_file", { path: "dnd-swamp/loot.csv", content: csv });
+  const report = await run("audit_loot_table", { path: "dnd-swamp/loot.csv" });
+  assert.match(report, /Rows: 4 \(lines 2-5\)/);
+  assert.match(report, /Weight column: "weight" \(column 3\)/);
+  assert.match(report, /Total weight: 100 \(OK, equals 100\)/);
+  assert.match(report, /Placeholders \(TODO, FIXME, TBD\): none/);
+  assert.match(report, /Result: no problems found/);
+});
+
+test("audit_loot_table: a wrong total and a TODO are reported with line numbers", async () => {
+  const { run } = await makeEnv();
+  const csv = [
+    "id,name,weight,cr,hazard_note", // line 1
+    "1,Giant Frog,30,1/4,none", // line 2
+    "2,Bog Wraith,30,3,TODO", // line 3
+    "3,Spore Lurker,35,2,toxic spores", // line 4
+    "",
+  ].join("\n");
+  await run("write_file", { path: "dnd-swamp/encounters.csv", content: csv });
+  const report = await run("audit_loot_table", { path: "dnd-swamp/encounters.csv" });
+  assert.match(report, /Total weight: 95 \(PROBLEM: 5 short of 100\)/);
+  assert.match(report, /line 3: TODO/);
+  assert.match(report, /Result: 2 problem\(s\) found/);
+});

@@ -129,3 +129,12 @@ test("a symlink that stays inside the workspace is fine", async (t) => {
   const r = await createSandbox(ws).resolve("alias/a.md");
   assert.equal(r.rel, "alias/a.md");
 });
+
+test("my own attack: Windows long-path prefixes and a leading backslash are rejected", async () => {
+  const { ws } = makeArea();
+  const sb = createSandbox(ws);
+  const attacks = ["\\\\?\\C:\\Windows\\win.ini", "\\\\.\\PhysicalDrive0", "\\Windows\\win.ini"];
+  for (const attack of attacks) {
+    await assert.rejects(sb.resolve(attack), SandboxError, `should reject ${attack}`);
+  }
+});

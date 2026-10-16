@@ -9,6 +9,7 @@ export const READ_TOOLS = [
   "git_log",
   "read_handoff",
   "append_log",
+  "audit_loot_table",
 ];
 export const WRITE_TOOLS = [...READ_TOOLS, "write_file", "str_replace", "git_commit"];
 export const ADMIN_TOOLS = [...WRITE_TOOLS, "delete_file"];

@@ -1,4 +1,4 @@
-# MCP File Server: Individual course project (Midterms Pt 1)
+# MCP File Server Project
 
 > **Author:** Aleah Rofh Montealto Romano (BSCS-3A)  
 > **Tested on:** Microsoft Windows 10 Pro, Node v24.15.0, git 2.45.2  

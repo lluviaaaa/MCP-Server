@@ -1,0 +1,11 @@
+id,name,weight,cr,hazard_note
+E01,Giant Frog,20,1/4,quicksand
+E02,Giant Mosquito,12,1/2,none
+E03,Drowned Zombie,12,1/2,acid rain
+E04,Leech Swarm,10,1,quicksand
+E05,Strangling Vine,10,2,none
+E06,Moss-Covered Skeleton,8,1/4,acid rain
+E07,Frog Folk Hunter,8,1,quicksand
+E08,Spore Lurker,8,3,toxic spores
+E09,Mossy Ghoul,7,2,none
+E10,Shambling Mound,5,5,toxic spores

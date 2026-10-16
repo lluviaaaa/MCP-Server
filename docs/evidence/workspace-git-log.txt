@@ -1,0 +1,5 @@
+b6d303b Session 3: fix reviewer findings and add encounter guide
+c86b6e5 Session 1: draft encounter and loot tables
+1fbcbd3 smoke: remove smoke-test files
+752a07c smoke: add smoke-test files
+1b9d03e Initial workspace

@@ -1,0 +1,11 @@
+id,item_name,weight,rarity,source_creature
+L01,Frog Hide Pouch,20,common,Giant Frog
+L02,Mosquito Proboscis,15,common,Giant Mosquito
+L03,Rotted Silver Locket,15,common,Drowned Zombie
+L04,Glowing Spore Sac,12,uncommon,Spore Lurker
+L05,Waterlogged Signet Ring,10,uncommon,Skeleton
+L06,Reed-Wrapped Marsh Lantern,8,uncommon,Frog Folk Hunter
+L07,Hag's Charm of Reeds,8,rare,Drowned Zombie
+L08,Strangler Vine Seed,5,uncommon,Strangling Vine
+L09,Ghoul Knucklebone Charm,4,rare,Ghoul
+L10,Shambling Mound Heartwood,3,very rare,Shambling Mound
